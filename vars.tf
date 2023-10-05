@@ -1,7 +1,7 @@
 variable "name" {
   default = "docdb"
 }
-variable "env" {}"
+variable "env" {}
 variable "allow_db_cidr" {}
 variable "vpc_id" {}
 variable "subnets" {}
