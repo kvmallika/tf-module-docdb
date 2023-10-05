@@ -27,7 +27,7 @@ resource "aws_security_group" "main" {
 
 }
 resource "aws_docdb_cluster_parameter_group" "main" {
-  family      = "docdb4.0.0"
+  family      = "docdb4.0"
   name        = "${var.name}-${var.env}-pg"
   description = "${var.name}-${var.env}-pg"
   tags = merge(var.tags, { Name = "${var.name}-${var.env}-pg" })
