@@ -2,9 +2,7 @@ resource "aws_docdb_subnet_group" "main" {
   name       = "${var.name}-${var.env}-subng"
   subnet_ids = var.subnets
 
-  tags = {
-    Name = merge(var.tags, { Name = "${var.name}-${var.env}-subng" })
-  }
+  tags = merge(var.tags, { Name = "${var.name}-${var.env}-subng" })
 }
 resource "aws_security_group" "main" {
   name        = "${var.name}-${var.env}-sg"
@@ -25,17 +23,14 @@ resource "aws_security_group" "main" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-  tags = {
-    Name = merge(var.tags, { Name = "${var.name}-${var.env}-sg" })
-  }
+  tags = merge(var.tags, { Name = "${var.name}-${var.env}-sg" })
+
 }
 resource "aws_docdb_cluster_parameter_group" "main" {
   family      = "docdb4.0.0"
   name        = "${var.name}-${var.env}-pg"
   description = "${var.name}-${var.env}-pg"
-  tags = {
-    Name = merge(var.tags, { Name = "${var.name}-${var.env}-pg" })
-  }
+  tags = merge(var.tags, { Name = "${var.name}-${var.env}-pg" })
 
 }
 resource "aws_docdb_cluster" "main" {
@@ -53,7 +48,6 @@ resource "aws_docdb_cluster" "main" {
   kms_key_id = var.kms_arn
   port = var.port_no
   vpc_security_group_ids =[aws_security_group.main.id]
-  tags = {
-    Name = merge(var.tags, { Name = "${var.name}-${var.env}" })
-  }
+  tags = merge(var.tags, { Name = "${var.name}-${var.env}" })
+
 }
